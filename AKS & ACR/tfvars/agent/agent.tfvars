@@ -1,0 +1,6 @@
+vm_name="vFunctionAdoAgentVm"
+log_analytics_workspace_name="vFunctionAksWorkspace"
+log_analytics_resource_group_name="backend_RG1"
+virtual_network_resource_group_name="backend_RG1"
+virtual_network_name="vFunctionAksVNet"
+subnet_name="VmSubnet"

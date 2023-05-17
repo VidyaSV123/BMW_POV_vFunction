@@ -1,0 +1,48 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run nprds, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+variables:
+- name: azureSubscription
+  value: vFunctionSC
+
+pool:
+  vmImage: ubuntu-lanprd
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+
+
+
+
+#- task: ShellScript@2
+#  inputs:
+#    scriptPath: './
+
+#- task: Bash@3
+ # inputs:
+  #  filePath: 'storage-account/create-storage-account.sh'
+   # workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '$azureSubscription'
+    scriptType: 'bash'
+    scriptLocation: 'scriptPath'
+    scriptPath: '$(System.DefaultWorkingDirectory)/storage-account/create-storage-account.sh'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '$azureSubscription'
+    scriptType: 'bash'
+    scriptLocation: 'scriptPath'
+    scriptPath: '$(System.DefaultWorkingDirectory)/key-vault/create-key-vault-and-secrets.sh'
+
+    
+
